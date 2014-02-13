@@ -1,12 +1,29 @@
 console.log("ha")
 
-/*
 $(document).on('DOMNodeInserted', function(e) {
-    if (e.target.className=='js-recommended-followers dashboard-user-recommendations flex-module-inner'){
-        console.log("haha")
+    if (e.target.className=='js-account-summary account-summary js-actionable-user '){
+        var jqueryItem = $(e.target)
+        jqueryItem.find(".metadata.social-context").each(function(index, value){
+            var res = $.ajax({
+                type : "GET",
+                url :"http://127.0.0.1:5000/get_condition?r=",
+                success: function(result) {
+                    //console.log(result)
+                },
+                async: false
+            }).responseText;
+            console.log("replacing ... ")
+            $(value).replaceWith('<small class="metadata social-context">' + JSON.parse(res)['text'] + '</small>')
+        });
+        
+        jqueryItem.one('click',  function(){ console.log("dian ge mao") } )
+        /*
+        jqueryItem.select(".metadata.social-context",  function(){
+            console.log("im just trying")
+        })
+        */
     }
 });
-*/
 
 localStorage.clear();
 function s4() {
@@ -38,6 +55,8 @@ getMachineID = function () {
 }
 getMachineID();
 
+
+/*
 console.log("ready to enter")
 $( window ).load(function() {   
     console.log("removing ... ")
@@ -63,3 +82,4 @@ $( window ).load(function() {
     }
     )
 })
+*/
