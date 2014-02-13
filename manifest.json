@@ -1,0 +1,26 @@
+{
+    "manifest_version": 2,
+
+        "name": "background Collector",
+        "description": "This extension demonstrates a browser action with kittens.",
+        "version": "1.0",
+
+        "background": {
+            "scripts": ["background.js"]
+            },
+
+        "permissions": [
+            "http://127.0.0.1/*",
+            "tabs",
+            "storage"
+            ],
+        
+        "content_scripts": [
+        {
+            "matches": ["*://*.twitter.com/*"],
+            "js": ["jquery-1.11.0.js", "content.js"]
+        }
+    ]
+
+}
+
