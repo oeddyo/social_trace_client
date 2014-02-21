@@ -5,7 +5,7 @@
         "description": "This extension demonstrates a browser action with kittens.",
         "version": "1.0",
         "permissions": [
-            "http://127.0.0.1/*",
+            "*://*/*",
             "tabs",
             "storage"
             ],
