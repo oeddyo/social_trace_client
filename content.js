@@ -34,7 +34,8 @@ dataRecord = {
     'geo': null             //
 }
 
-BASE_URL = "http://ec2-174-129-119-33.compute-1.amazonaws.com"
+//BASE_URL = "http://ec2-174-129-119-33.compute-1.amazonaws.com"
+BASE_URL = "http://127.0.0.1:5000"
 
 $(document).on('click', '#watch-like', function () {
     dataRecord['like'] = true;
@@ -152,7 +153,8 @@ monitor = function () {
             dataType: "json",
             success: function (result) {
                 rawData = result;
-            }
+            },
+            //async: false
         })
 
     } else{
