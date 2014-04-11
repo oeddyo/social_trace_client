@@ -1,23 +1,27 @@
 <!doctype html>
 <html>
-  <head>
+<head>
     <title>Getting Started Extension's Popup</title>
     <style>
-      body {
-        min-width: 357px;
-        overflow-x: hidden;
-      }
-      
-      img {
-        margin: 5px;
-        border: 2px solid black;
-        vertical-align: middle;
-        width: 75px;
-        height: 75px;
-      }
+        body {
+            min-width: 357px;
+            overflow-x: hidden;
+        }
+
+        img {
+            margin: 5px;
+            border: 2px solid black;
+            vertical-align: middle;
+            width: 75px;
+            height: 75px;
+        }
     </style>
+    <script src="jquery-1.11.0.js"></script>
+    <script src="config.js"></script>
     <script src="jquery.form.js"></script>
-    <script src="form.stuff.js"></script>
+    <script src="tools.js"></script>
+
+    <script src="my.form.js"></script>
 
     <!--
       - JavaScript and HTML must be in separate files: see our Content Security
@@ -25,16 +29,36 @@
       -
       - [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
      -->
-  </head>
-  <body>
-      This is just a test
-      <form id="myForm" action="comment.php" method="post"> 
-          Name: <input type="text" name="name" /> 
-          Comment: <textarea name="comment"></textarea> 
-          <input type="submit" value="Submit Comment" /> 
-      </form>
+</head>
+<body>
+<form id="myForm" action="submitForm" method="POST">
+    <p id="watch_video"><font color="red">Please watch the video first: <a
+            href="https://www.youtube.com/watch?v=Udl1tJSENgI" id="click_video">Video</a></font></p>
 
-  </body>
+    <p id="instruction">Please fill the information below.</p>
+
+    <p id="instruction2">Notice: As researchers, we would protect your information and would never spam you. However,
+        any misinformation would result in no payment</p>
+
+    <p id="warning">
+        <font color="red"></font>
+    </p>
+
+    <p>Email: <input type="text" name="email"/></p>
+
+    <p>5 digits zip code: <input type="text" name="zipcode"/></p>
+
+    <p>
+        <INPUT TYPE="radio" NAME="gender" VALUE="Male">Male
+        <INPUT TYPE="radio" NAME="gender" VALUE="Female">Female
+    </p>
+    <input type="submit" value="Submit Comment"/>
+
+</form>
+
+
+</body>
+
 </html>
 
 

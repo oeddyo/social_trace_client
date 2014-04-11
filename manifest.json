@@ -1,26 +1,39 @@
 {
     "manifest_version": 2,
 
-        "name": "background Collector",
-        "description": "This extension demonstrates a browser action with kittens.",
-        "version": "1.0",
-        "permissions": [
-            "*://*/*",
-            "tabs",
-            "storage"
-            ],
-        
-        "content_scripts": [
+    "name": "Social Traces",
+    "description": "Research Project from Cornell-Tech, Cornell University",
+    "version": "4.0",
+    "permissions": [
+        "*://youtube.com/*",
+        "<all_urls>",
+        "*://ec2-174-129-119-33.compute-1.amazonaws.com/*",
+        "tabs",
+        "storage",
+        "notifications"
+    ],
+
+    "content_scripts": [
         {
             "matches": [ "*://*.youtube.com/*"],
-            "js": ["d3.v3.js", "nv.d3.js", "jquery-1.11.0.js" , "content.js"],
+            "js": ["d3.v3.js", "nv.d3.js", "jquery-1.11.0.js" , "content.js", "tools.js", "highcharts.js", "config.js"],
             "css": ["chart.css"]
-        }],
-        
-
-        "browser_action": {
-            "default_icon": "icon.png",
-            "default_popup": "popup.html"
         }
+    ],
+
+    "content_security_policy": "img-src 'self' http://example.com/; object-src 'self'; script-src 'self'",
+
+    "browser_action": {
+        "default_icon": "icon.png",
+        "default_popup": "popup.html"
+    },
+
+    "background": {
+        "scripts": [
+            "background.js", "jquery-1.11.0.js", "config.js"
+        ]
+
+    }
+
 }
 

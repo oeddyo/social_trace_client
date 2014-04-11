@@ -1,27 +1,5 @@
-localStorage.clear();
-
-function s4() {
-    return Math.floor((1 + Math.random()) * 0x10000)
-        .toString(16)
-        .substring(1);
-};
-
-function guid() {
-    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-        s4() + '-' + s4() + s4() + s4();
-}
-
-var previousTime = -1;
-
-preDataRecord = {
-    'like': false,           //done
-    'dislike': false,        //done
-    'dwell_time': null,     //done
-    'url': null,            //done
-    'user_id': null,        //done
-    'gender': null,         //done
-    'geo': null             //
-}
+//BASE_URL = "http://ec2-174-129-119-33.compute-1.amazonaws.com"
+//BASE_URL = "http://127.0.0.1:5000"
 
 
 dataRecord = {
@@ -31,178 +9,197 @@ dataRecord = {
     'url': null,            //done
     'user_id': null,        //done
     'gender': null,         //done
-    'geo': null             //
+    'geo': null,             //
+    'social_media': null,
+    'condition': null,
+    'participant': null,
+    'time': null
 }
 
-//BASE_URL = "http://ec2-174-129-119-33.compute-1.amazonaws.com"
-BASE_URL = "http://127.0.0.1:5000"
+surveyTaken = false
 
 $(document).on('click', '#watch-like', function () {
     dataRecord['like'] = true;
-    //liked = true;
-
     console.log("like clicked")
-
 })
 
-$(document).on("click", "#watch-dislike", function(){
+$(document).on("click", "#watch-dislike", function () {
     dataRecord['dislike'] = true;
-    //disliked = true;
     console.log("dislike clicked")
 })
 
+var socialMediaList = [
+    ".share-service-icon.share-service-icon-facebook",
+    ".share-service-icon.share-service-icon-twitter",
+    ".share-service-icon.share-service-icon-googleplus",
+    ".share-service-icon.share-service-icon-blogger",
+    ".share-service-icon.share-service-icon-reddit",
+    ".share-service-icon.share-service-icon-tumblr",
+    ".share-service-icon.share-service-icon-pinterest",
+    ".share-service-icon.share-service-icon-linkedin"
+]
 
-monitor = function () {
+for (var i = 0; i < socialMediaList.length; i++) {
+    socialMedia = socialMediaList[i]
+    $(document).on('click', socialMedia, function (e) {
+        className = e.target.className
+        name = className.slice(1 + className.lastIndexOf("-"), className.length)
+        dataRecord.social_media = name
+    })
+}
+
+monitor = function (user_id) {
     dataRecord['url'] = window.location.href;
-
-
-    addGenderModule = function () {
+    addInfoModule = function () {
         var rawData = $.ajax({
             type: 'POST',
-            url: BASE_URL + "/get_gender",
-            data: JSON.stringify({"uri": window.location.href}),
+            url: BASE_URL + "/get_page_config",
+            data: JSON.stringify({"uri": window.location.href, "user_id": user_id}),
             crossDomain: true,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (result) {
                 rawData = result;
-
-                dataRecord['gender'] = rawData.response
-
-                myData = rawData.response
-                myData = [
-                    {"label": "male", "value": myData[0]},
-                    {"label": "female", "value": myData[1]}
-                ]
-                $("#chart_cell").html('<div id="chart"><svg></svg></div>')
-                $("#chart").css(
-                    {
-                        'height': '250px',
-                        'width': '250px'
-                    }
-                )
-                $("#gender_description_text").html('<div id="description_gender"><p>Gender of the users on this page:</p></div>').css({'font-size': 20})
-
-                var myColors = ["#FF0000", "#0000FF"]
-                d3.scale.myColors = function () {
-                    return d3.scale.ordinal().range(myColors);
-                };
-
-                nv.addGraph(function () {
-                    var chart = nv.models.pieChart()
-                        .x(function (d) {
-                            return d.label
+                console.log("printing before send " + rawData)
+                if (rawData.response == "Need Survey") {
+                    //resubmit local info to server
+                    chrome.storage.local.get('survey', function (result) {
+                        console.log("local copy of survey = ", result.survey)
+                        $.ajax({
+                            type: 'POST',
+                            url: BASE_URL + "/store_survey",
+                            data: JSON.stringify(result.survey),
+                            crossDomain: true,
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function (result) {
+                                rawData = result;
+                                console.log("update successfully")
+                            }
                         })
-                        .y(function (d) {
-                            return d.value
-                        })
-                        .showLabels(false).donut(false).color(d3.scale.myColors().range()).showLegend(true);
+                    })
+                    return;
+                }
+                dataRecord['gender'] = rawData.gender
+                dataRecord['geo'] = result.geo
 
-                    d3.select("#chart svg")
-                        .datum(myData)
-                        .transition().duration(1200)
-                        .call(chart);
 
-                    return chart;
-                });
+                condition = rawData.condition
+                gender = rawData.gender
+
+                dataRecord['condition'] = condition
+
+                if (condition == 'location') {
+                    $("#watch7-action-buttons").after('<div id="geo_cell" class="manipulate_content"></div>')
+                    console.log("adding location bar")
+                    addLocationChart(rawData.geo)
+                } else if (condition == 'control') {
+                    $("#watch7-action-buttons").after('<div id="empty_cell" class="manipulate_content"></div>')
+                    console.log("adding empty cell")
+                } else if (condition == "gender_more" || condition == "gender_normal" || condition == 'gender_less') {
+                    $("#watch7-action-buttons").after('<div id="gender_cell" class="manipulate_content"></div>')
+                    console.log("adding gender bar")
+                    addGenderChart(rawData.gender.scale, rawData.gender)
+                }
+
+            },
+            error: function (jqXHR, exception) {
+                console.log(exception)
             },
             async: false
         }).responseText;
 
     }
+    addInfoModule();
+}
 
-    addGeoLocation = function () {
-        var rawData = $.ajax({
-            type: 'GET',
-            url: BASE_URL + "/get_geo",
-            success: function (result) {
-                console.log("hahaha" + result)
-                dataRecord['geo'] = result.geo
-                console.log("GEO " + result.geo)
-                $("#geo_description_text").html('<br>People on this page from the same area with you:</br>').css({"font-size": 20})
-                $("#geo_cell").html('<div id="description_geo"><br>' + result.geo + '%</br>').css({"font-size": 80})
-            },
-            async: false
-        })
-    }
+var storedMacId = "";
+process = function (callback) {
+    chrome.storage.local.get('user_id',
+        function (result) {
+            if (!('user_id' in result)) {
+                storedMacId = my_guid();
+                chrome.storage.local.set({'user_id': storedMacId});
+            } else {
+                storedMacId = result['user_id']
+            }
+            dataRecord['user_id'] = storedMacId
+            callback(storedMacId)
+        });
+}
 
-    addTable = function () {
-        $("#watch7-action-buttons").after('<table id="manipulate_content"> <tr><th id="gender_description_text" ></th> <th id="geo_description_text"></th> </tr> <tr><th id="chart_cell"></th> <th id="geo_cell"></th> </tr>')
-    }
-
-    addTable();
-    addGenderModule();
-    addGeoLocation();
-
-
-    if (previousTime != -1){        //first time loading. ignore this record.
-        var currentTime = new Date();        //Get the current time.
-        var timeSpent = (currentTime - previousTime);        //Find out how long it's been.
-
-
-        dataRecord['dwell_time'] = timeSpent
-        previousTime = currentTime;
-        console.log("You stayed " + timeSpent)
-
-        $.ajax({
-            type: 'POST',
-            url: BASE_URL + "/store",
-            data: JSON.stringify(preDataRecord),
-            crossDomain: true,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (result) {
-                rawData = result;
-            },
-            //async: false
-        })
-
-    } else{
-        previousTime = new Date();
-    }
-    console.log("now data record = " + JSON.stringify(dataRecord))
-    console.log("old record = " + JSON.stringify(preDataRecord))
-
-
+window.onbeforeunload = function (evt) {
+    console.log("Closing window...")
+    var currentTime = new Date().getTime();        //Get the current time.
+    var timeSpent = (currentTime - previousTime);        //Find out how long it's been.
+    dataRecord['time'] = previousTime
+    previousTime = currentTime;
+    dataRecord['dwell_time'] = timeSpent
+    chrome.extension.sendRequest({ msg: "saveRecordInBackground", dataRecord: dataRecord});
+    console.log("Finished sending command to background")
 }
 
 
-process = function( callback){
-    chrome.storage.local.get('machine-id', function (item) {
-        storedMacId = item['machine-id'];
-        if (!storedMacId) {
-            //storedMacId = getIdFromServer()
-            storedMacId = guid();
-            chrome.storage.local.set({'machine-id': storedMacId});
-        }
-        console.log("user_id = " + storedMacId)
-        macId = storedMacId;
-        dataRecord['user_id'] = storedMacId
+var previousTime;
+$(document).ready(function () {
+    // check survey whenever a page is loaded
+    chrome.storage.local.get('survey',
+        function (result) {
+            if (!('survey' in result)) {
+                chrome.extension.sendRequest({ msg: "startFunc" });
+            } else {
+                previousTime = new Date().getTime()
+                process(monitor)   //first time
+                condition = result.survey.condition
+                setInterval(function () {
+                    // begin adding elements if it's 1) not control condition. 2) In Youtube watch page. 3)Not added yet
+                    if ($(".manipulate_content").length == 0 && window.location.href.indexOf("watch\?v=") != -1) {
+                        dataRecord['participant'] = result.survey
+                        process(monitor)
 
-        callback()
-    });
-}
+                        var currentTime = new Date().getTime();        //Get the current time.
+                        var timeSpent = (currentTime - previousTime);        //Find out how long it's been.
+                        previousTime = currentTime;
 
+                        dataRecord['dwell_time'] = timeSpent
+                        dataRecord['time'] = currentTime
+                        console.log("You stayed " + timeSpent)
+                        console.log("now data record = " + JSON.stringify(dataRecord))
 
+                        //only post for records more than 2 seconds. Since less than 2 seconds are noise.
+                        if (timeSpent > 2000) {
+                            $.ajax({
+                                type: 'POST',
+                                url: BASE_URL + "/store_record",
+                                data: JSON.stringify(dataRecord),
+                                crossDomain: true,
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (result) {
+                                    rawData = result;
+                                }
+                                //async: false
+                            })
+                        } else {
+                            console.log('junk... abandoning')
+                        }
 
-setInterval(function () {
-    if ($("#manipulate_content").length == 0) {
+                        dataRecord = {
+                            'like': false,           //done
+                            'dislike': false,        //done
+                            'dwell_time': null,     //done
+                            'url': null,            //done
+                            'user_id': null,        //done
+                            'gender': null,         //done
+                            'geo': null,            //done
+                            'social_media': null,
+                            'condition': null,
+                            'participant': null,
+                            'time': null
+                        }
+                    }
+                }, 1000); // check every second
+            }
+        });
+})
 
-        process( monitor)
-        preDataRecord = jQuery.extend({},dataRecord);   //copy but not referencing
-
-        dataRecord = {
-            'like': false,           //done
-            'dislike': false,        //done
-            'dwell_time': null,     //done
-            'url': null,            //done
-            'user_id': null,        //done
-            'gender': null,         //done
-            'geo': null             //done
-        }
-
-    }
-}, 1000); // check every second
-
-
-//close tab goes here.
