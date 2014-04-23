@@ -16,7 +16,7 @@ function submitForm() {
                 beforeSubmit: validate,
                 success: function (responseText, statusText, xhr, $form) {
                     chrome.storage.local.set({'survey': responseText})
-                    $('#myForm').html("<p>Thanks! You are done!</p> <p>Please keep the extension for one month, and we will contact you via email for compensations!</p>")
+                    $('#myForm').html("<p>Thanks! You are done!</p> <p>Thanks for using the Cornell Tech Extension -- please make sure to keep it until May 20th!</p>")
                     console.log("Submit successfully!")
                 },
                 url: BASE_URL + "/store_survey",

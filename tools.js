@@ -81,13 +81,21 @@ addLocationChart = function (scale) {
 addGenderChart = function (scale, gender) {
     $(function () {
         console.log("gender is "+ gender.user_gender)
+        gender_nick = "";
+        if(gender.user_gender == "Male"){
+            gender_nick = "Men";
+        }else{
+            gender_nick = "Women";
+        }
+
+
         $('#gender_cell').highcharts({
             chart: {
                 type: 'bar',
                 height: 150
             },
             title: {
-                text: 'Popularity of This Video In '+gender.user_gender,
+                text: 'Popularity of This Video Among ' + gender_nick,
                 style: {
                     color: '#000000',
                     fontSize: '20px'

@@ -13,7 +13,8 @@ dataRecord = {
     'social_media': null,
     'condition': null,
     'participant': null,
-    'time': null
+    'time': null,
+    'login': null
 }
 
 surveyTaken = false
@@ -83,6 +84,11 @@ monitor = function (user_id) {
                 dataRecord['gender'] = rawData.gender
                 dataRecord['geo'] = result.geo
 
+                if ($("#yt-masthead-user-displayname") == null || $("#yt-masthead-user-displayname").length==0){
+                    dataRecord['login'] = false;
+                }else{
+                    dataRecord['login'] = true;
+                }
 
                 condition = rawData.condition
                 gender = rawData.gender
@@ -154,7 +160,9 @@ $(document).ready(function () {
                 setInterval(function () {
                     // begin adding elements if it's 1) not control condition. 2) In Youtube watch page. 3)Not added yet
                     if ($(".manipulate_content").length == 0 && window.location.href.indexOf("watch\?v=") != -1) {
-                        dataRecord['participant'] = result.survey
+                        //Per Mor's request, we DONOT transmit User info each time
+                        //dataRecord['participant'] = result.survey
+
                         process(monitor)
 
                         var currentTime = new Date().getTime();        //Get the current time.
@@ -195,7 +203,8 @@ $(document).ready(function () {
                             'social_media': null,
                             'condition': null,
                             'participant': null,
-                            'time': null
+                            'time':null,
+                            'login': null
                         }
                     }
                 }, 1000); // check every second

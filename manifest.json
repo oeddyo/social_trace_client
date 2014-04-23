@@ -3,7 +3,7 @@
 
     "name": "Social Traces",
     "description": "Research Project from Cornell-Tech, Cornell University",
-    "version": "4.0",
+    "version": "4.3",
     "permissions": [
         "*://youtube.com/*",
         "<all_urls>",
@@ -27,13 +27,11 @@
         "default_icon": "icon.png",
         "default_popup": "popup.html"
     },
-
     "background": {
         "scripts": [
             "background.js", "jquery-1.11.0.js", "config.js"
         ]
 
     }
-
 }
 

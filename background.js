@@ -65,7 +65,9 @@ chrome.extension.onRequest.addListener(
                     if('survey' in result){
                         previousTime = new Date()
                         condition = result.survey.condition
-                        dataRecord['participant'] = result.survey
+
+                        //per Mor's request, do not transmit participant info each time
+                        //dataRecord['participant'] = result.survey
                         $.ajax({
                             type: 'POST',
                             url: BASE_URL + "/store_record",
