@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b09a84cf-3a46-457a-a583-ea7dab134740" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/notification.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/another.html" afterPath="$PROJECT_DIR$/another.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/background.js" afterPath="$PROJECT_DIR$/background.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.js" afterPath="$PROJECT_DIR$/config.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content.js" afterPath="$PROJECT_DIR$/content.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manifest.json" afterPath="$PROJECT_DIR$/manifest.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my.form.js" afterPath="$PROJECT_DIR$/my.form.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/popup.html" afterPath="$PROJECT_DIR$/popup.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools.js" afterPath="$PROJECT_DIR$/tools.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="social_trace_client.iws" />
@@ -34,10 +28,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="manifest.json" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="manifest.json" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/manifest.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="17" selection-start="323" selection-end="323" vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="645">
+            <state line="10" column="14" selection-start="304" selection-end="304" vertical-scroll-proportion="0.20949721" vertical-offset="0" max-vertical-offset="716">
               <folding />
             </state>
           </provider>
@@ -46,8 +40,10 @@
       <file leaf-file-name="content.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/content.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="66" selection-start="4045" selection-end="4054" vertical-scroll-proportion="-16.076923" vertical-offset="1127" max-vertical-offset="3285">
-              <folding />
+            <state line="107" column="19" selection-start="4190" selection-end="4190" vertical-scroll-proportion="0.0" vertical-offset="1065" max-vertical-offset="3390">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -106,19 +102,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="background.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/background.js">
+      <file leaf-file-name="config.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="37" selection-start="2146" selection-end="2146" vertical-scroll-proportion="0.0" vertical-offset="668" max-vertical-offset="1425">
+            <state line="5" column="0" selection-start="143" selection-end="143" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/config.js">
+      <file leaf-file-name="tools.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tools.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="108" selection-end="108" vertical-scroll-proportion="0.08108108" vertical-offset="0" max-vertical-offset="740">
+            <state line="101" column="16" selection-start="2472" selection-end="2472" vertical-scroll-proportion="0.0" vertical-offset="1170" max-vertical-offset="2340">
               <folding />
             </state>
           </provider>
@@ -143,14 +139,14 @@
         <option value="$PROJECT_DIR$/content.html" />
         <option value="$PROJECT_DIR$/chart.css" />
         <option value="$PROJECT_DIR$/background.html" />
-        <option value="$PROJECT_DIR$/content.js" />
         <option value="$PROJECT_DIR$/another.html" />
         <option value="$PROJECT_DIR$/background.js" />
         <option value="$PROJECT_DIR$/tools.js" />
         <option value="$PROJECT_DIR$/popup.html" />
         <option value="$PROJECT_DIR$/my.form.js" />
-        <option value="$PROJECT_DIR$/manifest.json" />
+        <option value="$PROJECT_DIR$/content.js" />
         <option value="$PROJECT_DIR$/config.js" />
+        <option value="$PROJECT_DIR$/manifest.json" />
       </list>
     </option>
   </component>
@@ -214,6 +210,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -234,7 +231,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -387,16 +383,12 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/jquery-1.11.0.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3286" column="22" selection-start="134425" selection-end="134425" vertical-scroll-proportion="0.0" vertical-offset="49300" max-vertical-offset="154710">
-          <folding />
-        </state>
+        <state line="3286" column="22" selection-start="134425" selection-end="134425" vertical-scroll-proportion="0.0" vertical-offset="49300" max-vertical-offset="154710" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/background.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="37" selection-start="2146" selection-end="2146" vertical-scroll-proportion="0.0" vertical-offset="668" max-vertical-offset="1425">
-          <folding />
-        </state>
+        <state line="58" column="37" selection-start="2146" selection-end="2146" vertical-scroll-proportion="0.0" vertical-offset="668" max-vertical-offset="1425" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config.js">
@@ -413,9 +405,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/background.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="0" selection-start="2135" selection-end="2135" vertical-scroll-proportion="0.0" vertical-offset="840" max-vertical-offset="975">
-          <folding />
-        </state>
+        <state line="56" column="0" selection-start="2135" selection-end="2135" vertical-scroll-proportion="0.0" vertical-offset="840" max-vertical-offset="975" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/images/tahoe-320x215.png">
@@ -431,7 +421,9 @@
     <entry file="file://$PROJECT_DIR$/content.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="51" column="0" selection-start="1535" selection-end="1535" vertical-scroll-proportion="0.0" vertical-offset="653" max-vertical-offset="3930">
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -468,9 +460,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/background.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="16" selection-start="1347" selection-end="1347" vertical-scroll-proportion="0.0" vertical-offset="278" max-vertical-offset="1005">
-          <folding />
-        </state>
+        <state line="42" column="16" selection-start="1347" selection-end="1347" vertical-scroll-proportion="0.0" vertical-offset="278" max-vertical-offset="1005" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/images/tahoe-320x215.png">
@@ -486,7 +476,9 @@
     <entry file="file://$PROJECT_DIR$/content.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="28" selection-start="616" selection-end="616" vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="3810">
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -523,9 +515,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/background.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="40" selection-end="40" vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="420">
-          <folding />
-        </state>
+        <state line="4" column="0" selection-start="40" selection-end="40" vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="420" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/background.html">
@@ -536,7 +526,9 @@
     <entry file="file://$PROJECT_DIR$/content.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="121" column="14" selection-start="3962" selection-end="3962" vertical-scroll-proportion="0.0" vertical-offset="1488" max-vertical-offset="3390">
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -569,7 +561,9 @@
     <entry file="file://$PROJECT_DIR$/content.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="186" column="60" selection-start="5882" selection-end="5882" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3390">
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -616,14 +610,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/jquery-1.11.0.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3286" column="22" selection-start="134425" selection-end="134425" vertical-scroll-proportion="0.0" vertical-offset="49300" max-vertical-offset="154710">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="0" selection-start="2131" selection-end="2131" vertical-scroll-proportion="0.0" vertical-offset="1230" max-vertical-offset="2340" />
+        <state line="3286" column="22" selection-start="134425" selection-end="134425" vertical-scroll-proportion="0.0" vertical-offset="49300" max-vertical-offset="154710" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/popup.html">
@@ -659,9 +646,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/background.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="37" selection-start="2146" selection-end="2146" vertical-scroll-proportion="0.0" vertical-offset="668" max-vertical-offset="1425">
-          <folding />
-        </state>
+        <state line="58" column="37" selection-start="2146" selection-end="2146" vertical-scroll-proportion="0.0" vertical-offset="668" max-vertical-offset="1425" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/another.html">
@@ -685,23 +670,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tools.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="101" column="16" selection-start="2472" selection-end="2472" vertical-scroll-proportion="0.0" vertical-offset="1170" max-vertical-offset="2340">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/content.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="66" selection-start="4045" selection-end="4054" vertical-scroll-proportion="-16.076923" vertical-offset="1127" max-vertical-offset="3285">
+        <state line="107" column="19" selection-start="4190" selection-end="4190" vertical-scroll-proportion="0.0" vertical-offset="1065" max-vertical-offset="3390">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="143" selection-end="143" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manifest.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="17" selection-start="323" selection-end="323" vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="645">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="108" selection-end="108" vertical-scroll-proportion="0.08108108" vertical-offset="0" max-vertical-offset="740">
+        <state line="10" column="14" selection-start="304" selection-end="304" vertical-scroll-proportion="0.20949721" vertical-offset="0" max-vertical-offset="716">
           <folding />
         </state>
       </provider>

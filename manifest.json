@@ -3,7 +3,7 @@
 
     "name": "Social Traces",
     "description": "Research Project from Cornell-Tech, Cornell University",
-    "version": "4.3",
+    "version": "5.1",
     "permissions": [
         "*://youtube.com/*",
         "<all_urls>",

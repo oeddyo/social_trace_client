@@ -81,6 +81,7 @@ monitor = function (user_id) {
                     })
                     return;
                 }
+
                 dataRecord['gender'] = rawData.gender
                 dataRecord['geo'] = result.geo
 
@@ -102,7 +103,8 @@ monitor = function (user_id) {
                 } else if (condition == 'control') {
                     $("#watch7-action-buttons").after('<div id="empty_cell" class="manipulate_content"></div>')
                     console.log("adding empty cell")
-                } else if (condition == "gender_more" || condition == "gender_normal" || condition == 'gender_less') {
+                } else if (condition.indexOf('gender')!=-1){
+                //} else if (condition == "gender_more" || condition == "gender_normal" || condition == 'gender_less') {
                     $("#watch7-action-buttons").after('<div id="gender_cell" class="manipulate_content"></div>')
                     console.log("adding gender bar")
                     addGenderChart(rawData.gender.scale, rawData.gender)
@@ -147,6 +149,8 @@ window.onbeforeunload = function (evt) {
 
 
 var previousTime;
+var failLimit = 100;
+
 $(document).ready(function () {
     // check survey whenever a page is loaded
     chrome.storage.local.get('survey',
@@ -159,7 +163,9 @@ $(document).ready(function () {
                 condition = result.survey.condition
                 setInterval(function () {
                     // begin adding elements if it's 1) not control condition. 2) In Youtube watch page. 3)Not added yet
-                    if ($(".manipulate_content").length == 0 && window.location.href.indexOf("watch\?v=") != -1) {
+                    // 4) retry less than 50 times
+                    if (failLimit >= 0 && $(".manipulate_content").length == 0 && window.location.href.indexOf("watch\?v=") != -1) {
+                        failLimit -= 1;
                         //Per Mor's request, we DONOT transmit User info each time
                         //dataRecord['participant'] = result.survey
 
